@@ -11,7 +11,6 @@ class RNElements extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#000' }}>
-                {/* <Header_ iconName='arrow-left' /> */}
                 <Header_ iconName='home' />
                 <Image
                     source={require("../images/cr2.jpg")}

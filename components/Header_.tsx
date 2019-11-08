@@ -18,22 +18,39 @@ class Header_ extends Component {
     render() {
         console.log('Test')
         const iconName = this.props.iconName;
-        //const i = <Icon name={iconName}/>
-        console.log(iconName)
+        let rc;
+        if (iconName == 'home') {
+            rc = <FadeInView>
+                <Avatar
+                    rounded
+                    source={require("../images/asif.jpg")}
+                    onPress={this.toggleModal} />
+            </FadeInView>
+        }
+        else{
+            rc = <Avatar
+                rounded
+                source={require("../images/asif.jpg")}
+                onPress={this.toggleModal} />
+        }
         return (
-            <View style={{ flex: 1, backgroundColor: '#000' }}>
+            <View style={{ flex: 0, backgroundColor: '#fff'}}>
                 <Header backgroundColor="#000"
-                    leftComponent={{ icon: iconName,type:'font-awesome', color: '#fff'}}
+                    leftComponent={
+                        <Avatar
+                            overlayContainerStyle={{ backgroundColor: '#485f69', }}
+                            rounded
+                            icon={{ name: iconName, type: 'font-awesome' }}
+                            onPress={() => {
+                                if (iconName == 'arrow-left') {
+                                    this.props.navigation.navigate('HomeScreen')
+                                }
+                            }}
+                        />
+                    }
                     centerComponent={{ text: 'FIFA MANAGEMENT SYSTEM', style: styles.welcome2 }}
-                    //rightComponent={{ icon: 'home', color: '#fff' }}
-                    rightComponent={
-                    <FadeInView>
-                    <Avatar
-                        rounded
-                        source={require("../images/asif.jpg")}
-                        onPress={this.toggleModal}
-                    />
-                    </FadeInView>}
+                    rightComponent={rc}
+
                 />
                 <Modal isVisible={this.state.isModalVisible}>
                     <View style={styles.MainContainer}>
@@ -53,11 +70,9 @@ class Header_ extends Component {
                     </View>
                 </Modal>
             </View>
-
         );
     }
 }
-
 const styles = StyleSheet.create({
     welcome: {
         fontSize: 17,
@@ -91,5 +106,4 @@ const styles = StyleSheet.create({
         flex: 1
     }
 });
-
 export default Header_;
