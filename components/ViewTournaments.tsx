@@ -156,7 +156,6 @@ export default class ViewTournaments extends Component {
                         </ScrollView>
                     </View>
                     <View>
-
                         {
                             list.map((l, i) => (
                                 <ListItem
@@ -168,13 +167,11 @@ export default class ViewTournaments extends Component {
                                 />
                             ))
                         }
-
                     </View>
 
                     <Footer />
                 </View>
             </ScrollView>
-
             // </Fragment>
         )
     }
